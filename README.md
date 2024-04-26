@@ -9,14 +9,14 @@ Clone the repo and run the script
 
 git clone https://github.com/spookyorange/postman-linux-install.git
 cd postman-linux-install
-./install.sh
+sh ./install.sh
 
 ```
 
 To remove the application(if it has been installed with this method)
 ```bash
 
-./uninstall.sh
+sh ./uninstall.sh
 
 ```
 

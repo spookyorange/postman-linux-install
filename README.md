@@ -4,8 +4,6 @@ A script to easily install Postman the tarball way on your Linux machine!
 
 ## Usage
 
-### For local installation
-
 Clone the repo and run the script
 ```bash
 

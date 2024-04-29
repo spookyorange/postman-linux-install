@@ -2,12 +2,14 @@
 
 A script to easily install Postman the tarball way on your Linux machine!
 
+Learn how I scriptified it @ [my relevant Medium article](https://medium.com/@spookyorange/scriptifying-stuff-installation-for-tarball-of-postman-on-linux-cab04ce89804)
+
 ## Usage
 
 Clone the repo and run the script
 ```bash
 
-git clone git@github.com:spookyorange/postman-linux-install.git
+git clone https://github.com/spookyorange/postman-linux-install.git
 cd postman-linux-install
 sh ./install.sh
 

@@ -1,10 +1,36 @@
+#!/bin/bash
+
+app_name=postman
 literal_name_of_installation_directory=".tarball-installations"
 general_installation_directory="$HOME/$literal_name_of_installation_directory"
-postman_installation_directory="$general_installation_directory/postman"
+app_installation_directory="$general_installation_directory/$app_name"
 official_package_location=https://dl.pstmn.io/download/latest/linux_64
+local_bin_path="$HOME/.local/bin"
+local_application_path="$HOME/.local/share/applications"
+app_bin_in_local_bin="$local_bin_path/$app_name"
+desktop_in_local_applications="$local_application_path/$app_name.desktop"
 
 echo "Starting installation, method: Local Install"
 echo "Local installation location $general_installation_directory"
+
+sleep 1
+
+echo "Checking if old files exist"
+if [ -f $app_bin_in_local_bin ]; then
+  echo "Old bin file detected, removing..."
+  rm $app_bin_in_local_bin
+fi
+
+if [ -d $app_installation_directory ]; then
+  echo "Old app files are found, removing..."
+  rm -rf $discord_installation_directory
+fi
+
+if [ -f $desktop_in_local_applications ]; then
+  echo "Old bin file detected, removing..."
+  rm $desktop_in_local_applications
+fi
+
 
 curl -o hello.tar.gz $official_package_location
 echo "Installed the tarball from official source"
@@ -18,34 +44,35 @@ if [ ! -d $general_installation_directory ]; then
 fi
 
 echo "Moving application to the desired local machine location"
-mv ./Postman/app $postman_installation_directory
+mv ./Postman/app $app_installation_directory
 
 echo "Removing leftovers from installation"
 rm -rf ./Postman
 rm -rf ./hello.tar.gz
 
 echo "Creating the bin file and filling it with necessary data"
-if [ ! -d $HOME/.local/bin/ ]; then
-  echo "$HOME/.local/bin not found, creating it for you"
-  mkdir $HOME/.local/bin/
+if [ ! -d $local_bin_path ]; then
+  echo "$local_bin_path not found, creating it for you"
+  mkdir $local_bin_path
 fi
-touch $HOME/.local/bin/postman
-chmod u+x $HOME/.local/bin/postman
+
+touch $app_bin_in_local_bin
+chmod u+x $app_bin_in_local_bin
 echo "#!/bin/bash
-$postman_installation_directory/Postman" >> $HOME/.local/bin/postman
+$app_installation_directory/Postman" >> $app_bin_in_local_bin
 
 echo "Creating the desktop file for your DE to recognize"
-touch $HOME/.local/share/applications/postman.desktop
+touch $desktop_in_local_applications
 echo "
 [Desktop Entry]
 Name=Postman
 Keywords=API;http;json;web;
-Exec=postman
+Exec=$app_bin_in_local_bin
 Icon=$HOME/$literal_name_of_installation_directory/postman/icons/icon_128x128.png
 Terminal=false
 Type=Application
 Categories=API;json;
-" >> $HOME/.local/share/applications/postman.desktop
+" >> $desktop_in_local_applications
 
 echo "Done and done"
 sleep 2

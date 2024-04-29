@@ -9,6 +9,8 @@ local_bin_path="$HOME/.local/bin"
 local_application_path="$HOME/.local/share/applications"
 app_bin_in_local_bin="$local_bin_path/$app_name"
 desktop_in_local_applications="$local_application_path/$app_name.desktop"
+icon_path=$app_installation_directory/icons/icon_128x128.png
+executable_path=$app_installation_directory/Postman
 
 echo "Starting installation, method: Local Install"
 echo "Local installation location $general_installation_directory"
@@ -59,7 +61,7 @@ fi
 touch $app_bin_in_local_bin
 chmod u+x $app_bin_in_local_bin
 echo "#!/bin/bash
-$app_installation_directory/Postman" >> $app_bin_in_local_bin
+$executable_path" >> $app_bin_in_local_bin
 
 echo "Creating the desktop file for your DE to recognize"
 touch $desktop_in_local_applications
@@ -67,8 +69,9 @@ echo "
 [Desktop Entry]
 Name=Postman
 Keywords=API;http;json;web;
-Exec=$app_bin_in_local_bin
+Exec=$executable_path
 Icon=$HOME/$literal_name_of_installation_directory/postman/icons/icon_128x128.png
+Icon=$icon_path
 Terminal=false
 Type=Application
 Categories=API;json;

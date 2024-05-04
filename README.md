@@ -4,6 +4,8 @@ A script to easily install Postman the tarball way on your Linux machine!
 
 Learn how I scriptified it @ [my relevant Medium article](https://medium.com/@spookyorange/scriptifying-stuff-installation-for-tarball-of-postman-on-linux-cab04ce89804)
 
+Note: This installation script is by no means affiliated with Postman project, or its maintainers.
+
 ## Usage
 
 Clone the repo and run the script
@@ -42,6 +44,7 @@ The script will install the application in the following destinations if you hav
 ## Tested Distros
 
 - Fedora by Spookyorange
+- SteamOS(Steam Deck) by Spookyorange
 
 ## Contributing
 

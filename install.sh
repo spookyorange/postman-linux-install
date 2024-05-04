@@ -64,7 +64,14 @@ echo "#!/bin/bash
 $executable_path" >> $app_bin_in_local_bin
 
 echo "Creating the desktop file for your DE to recognize"
+
+if [ ! -d $local_application_path ]; then
+  echo "Creating the $local_application_path directory for desktop file"
+  mkdir $local_application_path
+fi
+
 touch $desktop_in_local_applications
+
 echo "
 [Desktop Entry]
 Name=Postman
